@@ -58,6 +58,5 @@ flutter build apk -t lib/main.dart
 - Endpoints: `/stops` for search, `/stops/{stopId}/departures` for departures
 
 ## Notes
-- Ensure fonts (Inter-Medium.ttf, Inter-SemiBold.ttf) are placed in the `fonts/` directory.
 - The project assumes Material Design icons for transport types; custom icons can be added as per design documents.
 - Run `dart run build_runner watch --delete-conflicting-outputs` for continuous code generation during development.

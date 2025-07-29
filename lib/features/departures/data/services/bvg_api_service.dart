@@ -10,9 +10,13 @@ class BvgApiService {
     try {
       final response =
           await _dio.get('/stops', queryParameters: {'query': query});
-      return (response.data as List)
-          .map((json) => Stop.fromJson(json))
-          .toList();
+      return (response.data as List).map((json) {
+        var stop = Stop.fromJson(json);
+        var idIBNR = stop.id.split(":")[2];
+        stop.id = idIBNR;
+        stop.location?.id = idIBNR;
+        return stop;
+      }).toList();
     } catch (e) {
       throw Exception('Failed to search stops: $e');
     }

@@ -1,8 +1,8 @@
+import 'package:bvg_departures_app/features/departures/data/models/stop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:go_router/go_router.dart';
-import '../../data/models/stop.dart';
 import '../providers/departures_provider.dart';
 
 class SearchScreen extends ConsumerWidget {
@@ -31,8 +31,8 @@ class SearchScreen extends ConsumerWidget {
           },
           itemBuilder: (context, Stop stop) {
             return ListTile(
-              title:
-                  Text(stop.name, style: Theme.of(context).textTheme.bodyLarge),
+              title: Text(stop.name ?? 'No name',
+                  style: Theme.of(context).textTheme.bodyLarge),
             );
           },
           onSelected: (Stop stop) {

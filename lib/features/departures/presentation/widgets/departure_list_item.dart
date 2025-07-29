@@ -22,13 +22,13 @@ class DepartureListItem extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        leading: _getTransportIcon(departure.transportType),
+        leading: _getTransportIcon(departure.line?.mode),
         title: Text(
-          '${departure.lineName} to ${departure.direction}',
+          '${departure.line?.name} to ${departure.direction}',
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         subtitle: Text(
-          'Departs at ${departure.formattedTime}${departure.delayMinutes != null ? ' (+${departure.delayMinutes}m)' : ''}',
+          'Departs at ${departure.formattedWhen}${departure.delay != 0 ? ' (+${departure.delay}m)' : ''}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         trailing: departure.platform != null
@@ -41,8 +41,8 @@ class DepartureListItem extends StatelessWidget {
     );
   }
 
-  Widget _getTransportIcon(String type) {
-    switch (type.toLowerCase()) {
+  Widget _getTransportIcon(String? type) {
+    switch (type?.toLowerCase()) {
       case 'bus':
         return const Icon(Icons.directions_bus);
       case 'tram':
