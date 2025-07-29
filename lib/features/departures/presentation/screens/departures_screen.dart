@@ -24,10 +24,12 @@ class DeparturesScreen extends ConsumerWidget {
         ],
       ),
       body: departuresAsync.when(
-        data: (departures) => ListView.builder(
+        data: (departures) => ListView.separated(
           itemCount: departures.length,
           itemBuilder: (context, index) =>
               DepartureListItem(departure: departures[index]),
+          separatorBuilder: (BuildContext context, int index) =>
+              const Divider(),
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => Center(child: Text('Error: $error')),

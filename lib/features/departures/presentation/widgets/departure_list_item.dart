@@ -10,34 +10,98 @@ class DepartureListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDelayed = departure.delay != null && departure.delay! > 0;
+    final delayText = isDelayed ? ' ${departure.delay}m' : 'unknown';
+
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: const [
-          BoxShadow(
-            color: AppColors.stateLayer,
-            blurRadius: 2.0,
+      constraints: const BoxConstraints(minHeight: 80),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Left content (icon and text)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // First line: Line and destination
+                Row(
+                  children: [
+                    _getTransportIcon(departure.line?.product),
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: AppColors.surface,
+                        border:
+                            Border.all(color: AppColors.onSurface, width: 1),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        departure.line?.name ?? 'Unknown line',
+                        style: theme.textTheme.labelLarge,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 14),
+                // Second line: Station
+                Text(
+                  departure.stop?.name ?? 'Unknown station',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    color: AppColors.onSecondary,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                // Third line: Direction Station and platform
+                Text(
+                  '${departure.destination?.name ?? 'Unknown direction'} • Platform ${departure.platform ?? '?'}',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: AppColors.onSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Right content (time and status)
+          Container(
+            decoration: BoxDecoration(
+              color: isDelayed ? AppColors.error : AppColors.success,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SizedBox(
+              width: 80,
+              height: 80, // Fixed height for the right side
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Spacer(),
+                  Text(
+                    departure.formattedWhen,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color:
+                          isDelayed ? AppColors.onError : AppColors.onSuccess,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    isDelayed ? 'delayed\n$delayText' : 'on-time',
+                    maxLines: 2,
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      color:
+                          isDelayed ? AppColors.onError : AppColors.onSuccess,
+                    ),
+                  ),
+                  Spacer()
+                ],
+              ),
+            ),
           ),
         ],
-      ),
-      child: ListTile(
-        leading: _getTransportIcon(departure.line?.product),
-        title: Text(
-          '${departure.line?.name} to ${departure.direction}',
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
-        subtitle: Text(
-          'Departs at ${departure.formattedWhen}${departure.delay != 0 || departure.delay != null ? ' (${departure.delay}m)' : ''}',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        trailing: departure.platform != null
-            ? Text(
-                'Platform ${departure.platform}',
-                style: Theme.of(context).textTheme.labelMedium,
-              )
-            : null,
       ),
     );
   }
@@ -81,9 +145,8 @@ class DepartureListItem extends StatelessWidget {
     }
     return SvgPicture.asset(
       iconPath,
-      width: 48.0,
-      height: 48.0,
-      // colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+      width: 24,
+      height: 24,
     );
   }
 }
