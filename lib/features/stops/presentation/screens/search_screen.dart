@@ -31,7 +31,7 @@ class SearchScreen extends ConsumerWidget {
               decoration: InputDecoration(
                 hintText: 'Search for a BVG stop',
                 border: InputBorder.none,
-                hintStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).hintColor,
                     ),
                 prefixIcon: IconButton(
