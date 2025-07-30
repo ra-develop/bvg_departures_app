@@ -1,3 +1,5 @@
+import 'package:bvg_departures_app/core/constants/app_colors.dart';
+import 'package:bvg_departures_app/core/widgets/app_bar_delimiter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -11,21 +13,27 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: SizedBox(
-        width: double.infinity,
-        child: ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-            alignment: Alignment.centerLeft,
-          ),
-          onPressed: () => context.go('/search'),
-          icon:
-              SvgPicture.asset('assets/svg/search.svg', width: 24, height: 24),
-          label: Text(
-            'Search for a Station and Stop',
-            style: theme.textTheme.bodyLarge,
+        title: SizedBox(
+          width: double.infinity,
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              alignment: Alignment.centerLeft,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(28),
+                side: BorderSide(color: AppColors.borderPrimary, width: 1),
+              ),
+            ),
+            onPressed: () => context.go('/search'),
+            icon: SvgPicture.asset('assets/svg/search.svg',
+                width: 24, height: 24),
+            label: Text(
+              'Search for a Station and Stop',
+              style: theme.textTheme.bodyLarge,
+            ),
           ),
         ),
-      )),
+        bottom: appBarDelimiter(),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(

@@ -1,3 +1,5 @@
+import 'package:bvg_departures_app/core/constants/app_colors.dart';
+import 'package:bvg_departures_app/core/widgets/app_bar_delimiter.dart';
 import 'package:bvg_departures_app/features/departures/presentation/providers/departures_provider.dart';
 import 'package:bvg_departures_app/features/departures/presentation/widgets/departure_list_item.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,7 @@ class DeparturesScreen extends ConsumerWidget {
             onPressed: () => context.go('/'),
           ),
         ],
+        bottom: appBarDelimiter(),
       ),
       body: departuresAsync.when(
         data: (departures) => ListView.separated(

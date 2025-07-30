@@ -1,3 +1,5 @@
+import 'package:bvg_departures_app/core/constants/app_colors.dart';
+import 'package:bvg_departures_app/core/widgets/app_bar_delimiter.dart';
 import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
 import 'package:bvg_departures_app/features/stops/presentation/providers/stops_provider.dart';
 import 'package:bvg_departures_app/features/stops/presentation/widgets/no_item_found.dart';
@@ -80,6 +82,7 @@ class SearchScreen extends ConsumerWidget {
           loadingBuilder: (context) =>
               const Center(child: CircularProgressIndicator()),
         ),
+        bottom: appBarDelimiter(),
       ),
       body: Container(), // Empty body since search is in app bar
     );

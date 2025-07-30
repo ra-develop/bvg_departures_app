@@ -17,4 +17,9 @@ class AppColors {
       Color(0xFFDEF8E3); // Semantic Colors/ Background/System/Success
   static const onSuccess =
       Color(0xFF077237); // Semantic Colors/ Foreground/System/Success
+
+  static const borderPrimary =
+      Color(0xFF191F25); // Semantic Colors/ Border/System/Primary
+  static const borderSecondary =
+      Color(0xFFEDF1F5); // Semantic Colors/ Border/System/Secondary
 }
