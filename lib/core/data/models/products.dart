@@ -20,13 +20,13 @@ class Products {
   bool? regional;
 
   Products({
-    this.suburban,
-    this.subway,
-    this.tram,
-    this.bus,
-    this.ferry,
-    this.express,
-    this.regional,
+    this.suburban = false,
+    this.subway = false,
+    this.tram = false,
+    this.bus = false,
+    this.ferry = false,
+    this.express = false,
+    this.regional = false,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) =>

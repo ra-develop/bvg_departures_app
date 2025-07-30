@@ -4,19 +4,21 @@ import 'package:bvg_departures_app/features/stops/presentation/widgets/no_item_f
 import 'package:bvg_departures_app/features/stops/presentation/widgets/stop_serach_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchScreen extends ConsumerWidget {
-  const SearchScreen({super.key});
+  SearchScreen({super.key});
+
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Search Stops')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: TypeAheadField<Stop>(
+      appBar: AppBar(
+        title: TypeAheadField<Stop>(
+          controller: _searchController,
           suggestionsCallback: (pattern) async {
             if (pattern.isEmpty) return [];
             return await ref.read(stopsProvider(pattern).future);
@@ -25,22 +27,61 @@ class SearchScreen extends ConsumerWidget {
             return TextField(
               controller: controller,
               focusNode: focusNode,
-              decoration: const InputDecoration(
-                labelText: 'Search for a BVG stop',
-                border: OutlineInputBorder(),
+              autofocus: true,
+              decoration: InputDecoration(
+                hintText: 'Search for a BVG stop',
+                border: InputBorder.none,
+                hintStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).hintColor,
+                    ),
+                prefixIcon: IconButton(
+                  icon: SvgPicture.asset(
+                    'assets/svg/arrow_left_alt.svg',
+                    width: 24,
+                    height: 24,
+                  ),
+                  onPressed: () => context.go('/'),
+                ),
+                suffixIcon: ValueListenableBuilder<TextEditingValue>(
+                  valueListenable: _searchController,
+                  builder: (context, value, _) {
+                    return Visibility(
+                      visible: value.text.isNotEmpty,
+                      child: IconButton(
+                        icon: SvgPicture.asset(
+                          'assets/svg/cancel.svg',
+                          width: 24,
+                          height: 24,
+                        ),
+                        onPressed: () {
+                          _searchController.clear(); // Clear search text
+                          FocusScope.of(context)
+                              .requestFocus(); // Keep keyboard open
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
+              style: Theme.of(context).textTheme.titleMedium,
             );
           },
           itemBuilder: (context, Stop stop) {
-            return StopSearchListItem(stop: stop);
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: StopSearchListItem(stop: stop),
+            );
           },
           onSelected: (Stop stop) {
             context.go('/departures/${stop.id}');
           },
           hideOnEmpty: false,
-          emptyBuilder: (context) => NoItemsFound(),
+          emptyBuilder: (context) => const NoItemsFound(),
+          loadingBuilder: (context) =>
+              const Center(child: CircularProgressIndicator()),
         ),
       ),
+      body: Container(), // Empty body since search is in app bar
     );
   }
 }

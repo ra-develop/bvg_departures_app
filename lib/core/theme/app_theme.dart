@@ -31,21 +31,27 @@ class AppTheme {
           fontSize: 28.0,
           height: 32.0 / 28.0, // 32.0 line height
         ),
-        headlineSmall: TextStyle(
+        headlineMedium: TextStyle(
           fontFamily: 'Inter',
           fontWeight: FontWeight.w600, // SemiBold
           fontSize: 24.0,
-          height: 24.0 / 24.0, // 24.0 line height
+          height: 28.0 / 24.0, // 24.0 line height
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w600, // SemiBold
+          fontSize: 20.0,
+          height: 24.0 / 20.0, // 28.0 line height
         ),
         titleLarge: TextStyle(
           fontFamily: 'Inter',
-          fontWeight: FontWeight.w500, // Medium
+          fontWeight: FontWeight.w800, // Medium
           fontSize: 24.0,
-          height: 24.0 / 24.0, // 24.0 line height
+          height: 28.0 / 24.0, // 28.0 line height
         ),
         titleMedium: TextStyle(
           fontFamily: 'Inter',
-          fontWeight: FontWeight.w500, // Medium
+          fontWeight: FontWeight.w800, // Medium
           fontSize: 20.0,
           height: 24.0 / 20.0, // 24.0 line height
         ),
@@ -53,37 +59,44 @@ class AppTheme {
           fontFamily: 'Inter',
           fontWeight: FontWeight.w600, // SemiBold
           fontSize: 16.0,
-          height: 4.0 / 16.0, // 4.0 line height
+          height: 24.0 / 16.0, // 24.0 line height
         ),
         labelLarge: TextStyle(
           fontFamily: 'Inter',
           fontWeight: FontWeight.w600, // SemiBold
           fontSize: 14.0,
-          height: 0.0 / 14.0, // 0.0 line height (Flutter interprets as 1.0)
+          height: 20.0 / 14.0, // 20.0 line height (Flutter interprets as 1.0)
         ),
         labelMedium: TextStyle(
           fontFamily: 'Inter',
           fontWeight: FontWeight.w600, // SemiBold
           fontSize: 12.0,
-          height: 4.0 / 12.0, // 4.0 line height
+          height: 16.0 / 12.0, // 16.0 line height
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w600, // SemiBold
+          fontSize: 11.0,
+          height: 16.0 / 11.0, // 16.0 line height
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Inter',
-          fontWeight: FontWeight.w400, // Regular (approximating Inter default)
+          fontWeight:
+              FontWeight.normal, // Regular (approximating Inter default)
           fontSize: 16.0,
-          height: 4.0 / 16.0, // 4.0 line height
+          height: 24.0 / 16.0, // 24.0 line height
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Inter',
-          fontWeight: FontWeight.w400, // Regular
+          fontWeight: FontWeight.normal, // Regular
           fontSize: 14.0,
-          height: 0.0 / 14.0, // 0.0 line height (Flutter interprets as 1.0)
+          height: 20.0 / 14.0, // 20.0 line height
         ),
         bodySmall: TextStyle(
           fontFamily: 'Inter',
-          fontWeight: FontWeight.w400, // Regular
+          fontWeight: FontWeight.normal, // Regular
           fontSize: 12.0,
-          height: 4.0 / 12.0, // 4.0 line height
+          height: 16.0 / 12.0, // 16.0 line height
         ),
       ),
     );

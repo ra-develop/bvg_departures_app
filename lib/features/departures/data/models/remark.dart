@@ -1,5 +1,5 @@
 import 'package:bvg_departures_app/features/departures/data/models/icon.dart';
-import 'package:bvg_departures_app/features/departures/data/models/products.dart';
+import 'package:bvg_departures_app/core/data/models/products.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 

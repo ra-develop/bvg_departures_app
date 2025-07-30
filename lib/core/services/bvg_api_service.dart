@@ -10,13 +10,14 @@ class BvgApiService {
     try {
       final response =
           await _dio.get('/stops', queryParameters: {'query': query});
-      return (response.data as List).map((json) {
+
+      final stops = <Stop>[];
+      for (var json in response.data as List) {
         var stop = Stop.fromJson(json);
         var idIBNR = stop.id.split(":")[2];
-        stop.id = idIBNR;
-        stop.location?.id = idIBNR;
-        return stop;
-      }).toList();
+        stops.add(await getStopById(idIBNR));
+      }
+      return stops;
     } catch (e) {
       throw Exception('Failed to search stops: $e');
     }
@@ -31,6 +32,16 @@ class BvgApiService {
           .toList();
     } catch (e) {
       throw Exception('Failed to fetch departures: $e');
+    }
+  }
+
+  Future<Stop> getStopById(String stopId) async {
+    try {
+      final response = await _dio
+          .get('/stops/$stopId', queryParameters: {'linesOfStops': false});
+      return Stop.fromJson(response.data);
+    } catch (e) {
+      throw Exception('Failed to fetch stop: $e');
     }
   }
 }

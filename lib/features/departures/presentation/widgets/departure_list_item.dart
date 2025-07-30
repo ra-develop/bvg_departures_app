@@ -19,6 +19,7 @@ class DepartureListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 12,
         children: [
           // Left content (icon and text)
           Expanded(
@@ -29,7 +30,7 @@ class DepartureListItem extends StatelessWidget {
                 Row(
                   children: [
                     _getTransportIcon(departure.line?.product),
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 2),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
@@ -45,17 +46,17 @@ class DepartureListItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 14),
+                const SizedBox(height: 8),
                 // Second line: Station
                 Text(
                   departure.stop?.name ?? 'Unknown station',
-                  maxLines: 1,
-                  overflow: TextOverflow.visible,
+                  // maxLines: 1,
+                  // overflow: TextOverflow.visible,
                   style: theme.textTheme.titleSmall?.copyWith(
                     color: AppColors.onSecondary,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 2),
                 // Third line: Direction Station and platform
                 Text(
                   '${departure.destination?.name ?? 'Unknown direction'} • Platform ${departure.platform ?? '?'}',
