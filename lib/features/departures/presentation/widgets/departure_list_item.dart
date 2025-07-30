@@ -49,6 +49,8 @@ class DepartureListItem extends StatelessWidget {
                 // Second line: Station
                 Text(
                   departure.stop?.name ?? 'Unknown station',
+                  maxLines: 1,
+                  overflow: TextOverflow.visible,
                   style: theme.textTheme.titleSmall?.copyWith(
                     color: AppColors.onSecondary,
                   ),

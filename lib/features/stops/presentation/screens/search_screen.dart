@@ -1,5 +1,7 @@
 import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
 import 'package:bvg_departures_app/features/stops/presentation/providers/stops_provider.dart';
+import 'package:bvg_departures_app/features/stops/presentation/widgets/no_item_found.dart';
+import 'package:bvg_departures_app/features/stops/presentation/widgets/stop_serach_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -30,15 +32,13 @@ class SearchScreen extends ConsumerWidget {
             );
           },
           itemBuilder: (context, Stop stop) {
-            return ListTile(
-              title: Text(stop.name ?? 'No name',
-                  style: Theme.of(context).textTheme.bodyLarge),
-            );
+            return StopSearchListItem(stop: stop);
           },
           onSelected: (Stop stop) {
             context.go('/departures/${stop.id}');
           },
-          hideOnEmpty: true,
+          hideOnEmpty: false,
+          emptyBuilder: (context) => NoItemsFound(),
         ),
       ),
     );
