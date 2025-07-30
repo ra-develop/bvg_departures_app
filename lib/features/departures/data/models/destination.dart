@@ -1,4 +1,4 @@
-import 'package:bvg_departures_app/features/departures/data/models/location.dart';
+import 'package:bvg_departures_app/core/data/models/location.dart';
 import 'package:bvg_departures_app/features/departures/data/models/products.dart';
 import 'package:json_annotation/json_annotation.dart';
 

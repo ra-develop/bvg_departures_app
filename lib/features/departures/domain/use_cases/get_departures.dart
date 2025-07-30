@@ -1,6 +1,6 @@
+import 'package:bvg_departures_app/features/departures/data/models/departure.dart';
+import 'package:bvg_departures_app/features/departures/data/repositories/departure_repository.dart';
 import 'package:equatable/equatable.dart';
-import '../../data/models/departure.dart';
-import '../../data/repositories/departure_repository.dart';
 
 class GetDepartures {
   final DepartureRepository _repository;

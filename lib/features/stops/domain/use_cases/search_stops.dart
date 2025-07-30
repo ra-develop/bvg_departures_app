@@ -1,9 +1,9 @@
+import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
+import 'package:bvg_departures_app/features/stops/data/repositories/stop_repository.dart';
 import 'package:equatable/equatable.dart';
-import '../../data/models/stop.dart';
-import '../../data/repositories/departure_repository.dart';
 
 class SearchStops {
-  final DepartureRepository _repository;
+  final StopRepository _repository;
 
   SearchStops(this._repository);
 

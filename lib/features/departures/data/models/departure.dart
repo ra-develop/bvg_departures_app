@@ -1,6 +1,6 @@
 import 'package:bvg_departures_app/features/departures/data/models/destination.dart';
 import 'package:bvg_departures_app/features/departures/data/models/line.dart';
-import 'package:bvg_departures_app/features/departures/data/models/location.dart';
+import 'package:bvg_departures_app/core/data/models/location.dart';
 import 'package:bvg_departures_app/features/departures/data/models/remark.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';

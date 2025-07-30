@@ -1,8 +1,8 @@
+import 'package:bvg_departures_app/features/departures/presentation/providers/departures_provider.dart';
+import 'package:bvg_departures_app/features/departures/presentation/widgets/departure_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../providers/departures_provider.dart';
-import '../widgets/departure_list_item.dart';
 
 class DeparturesScreen extends ConsumerWidget {
   final String stopId;

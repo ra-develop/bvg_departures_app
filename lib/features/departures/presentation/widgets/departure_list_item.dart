@@ -1,7 +1,7 @@
 import 'package:bvg_departures_app/core/constants/app_colors.dart';
+import 'package:bvg_departures_app/features/departures/data/models/departure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../data/models/departure.dart';
 
 class DepartureListItem extends StatelessWidget {
   final Departure departure;

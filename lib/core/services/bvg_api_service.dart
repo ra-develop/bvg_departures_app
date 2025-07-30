@@ -1,6 +1,6 @@
 import 'package:bvg_departures_app/core/network/dio_client.dart';
 import 'package:bvg_departures_app/features/departures/data/models/departure.dart';
-import 'package:bvg_departures_app/features/departures/data/models/stop.dart';
+import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
 import 'package:dio/dio.dart';
 
 class BvgApiService {
