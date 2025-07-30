@@ -73,7 +73,7 @@ class SearchScreen extends ConsumerWidget {
             );
           },
           onSelected: (Stop stop) {
-            context.go('/departures/${stop.id}');
+            context.go('/departures/${stop.id}/${stop.name}');
           },
           hideOnEmpty: false,
           emptyBuilder: (context) => const NoItemsFound(),

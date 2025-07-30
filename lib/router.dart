@@ -17,10 +17,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => SearchScreen(),
       ),
       GoRoute(
-        path: '/departures/:stopId',
+        path: '/departures/:stopId/:stopName',
         builder: (context, state) {
           final stopId = state.pathParameters['stopId']!;
-          return DeparturesScreen(stopId: stopId);
+          final stopName = state.pathParameters['stopName'] ?? '';
+          return DeparturesScreen(
+            stopId: stopId,
+            stopName: stopName,
+          );
         },
       ),
     ],
