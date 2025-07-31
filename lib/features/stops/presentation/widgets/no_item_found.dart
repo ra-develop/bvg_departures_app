@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 /// The widget is styled to be centered and has a padding at the top.
 /// It can be used in various parts of the app where a "no items found" message
 /// is needed, such as in search results or empty lists.
-/// Example usage:
 class NoItemsFound extends StatelessWidget {
   const NoItemsFound({
     super.key,

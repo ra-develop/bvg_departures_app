@@ -7,11 +7,6 @@ part 'destination.g.dart';
 /// Represents a destination, which can be a stop or station.
 /// This model includes the type of destination, its ID, name, location,
 /// and the available transportation products.
-/// The `type` field is set to "stop" by default, indicating that this model
-/// is primarily used for stops.
-/// The `id` field is a unique identifier for the destination.
-/// The `name` field is the name of the stop or station.
-/// The `location` field contains geographical coordinates (latitude and longitude)
 @JsonSerializable()
 class Destination {
   @JsonKey(name: "type")

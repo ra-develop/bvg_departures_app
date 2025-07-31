@@ -10,12 +10,6 @@ part 'icon.g.dart';
 /// The `title` field provides a human-readable name for the icon.
 /// This model is serializable to and from JSON format, making it suitable for
 /// use in APIs or local storage.
-/// Example usage:
-/// ```dart
-/// final icon = Icon(type: 'bus', title: 'Bus Icon');
-/// final json = icon.toJson();
-/// final newIcon = Icon.fromJson(json);
-/// ```
 @JsonSerializable()
 class Icon {
   @JsonKey(name: "type")

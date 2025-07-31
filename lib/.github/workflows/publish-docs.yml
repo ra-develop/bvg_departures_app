@@ -6,13 +6,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: dart-lang/setup-dart@v1
       - run: dart pub get
       - run: dart doc .
+      - name: Move docs to /docs folder
+        run: |
+          mkdir -p docs
+          mv doc/api/* docs/ || echo "No files to move, proceeding..."
+      - name: Debug publish directory
+        run: ls -R ./docs || echo "Docs directory is empty or not found"
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./doc/api
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          force_orphan: true

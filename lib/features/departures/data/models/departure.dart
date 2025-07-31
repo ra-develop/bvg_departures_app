@@ -10,7 +10,6 @@ part 'departure.g.dart';
 /// Represents a departure from a stop.
 /// This model contains information about the trip, stop, timing, platform,
 /// direction, line, and any remarks associated with the departure.
-/// The `tripId` is a unique identifier for the trip.
 @JsonSerializable()
 class Departure {
   @JsonKey(name: "tripId")

@@ -9,12 +9,6 @@ part 'operator.g.dart';
 /// The `name` field is the name of the operator.
 /// This model is serializable to and from JSON format, making it suitable for
 /// use in APIs or local storage.
-/// Example usage:
-/// ```dart
-/// final operator = Operator(type: 'transport', id: '123', name: 'B  VG');
-/// final json = operator.toJson();
-/// final newOperator = Operator.fromJson(json);
-/// ```
 @JsonSerializable()
 class Operator {
   @JsonKey(name: "type")
