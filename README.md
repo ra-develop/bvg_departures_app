@@ -39,19 +39,31 @@ flutter build apk -t lib/main.dart
 ```
 
 ## Dependencies
-- `flutter_riverpod`: State management
-- `dio`: HTTP client for BVG API
-- `dart_json_mapper`: JSON serialization
+- `flutter_riverpod`: Flutter state management
+- `dio`: HTTP client
+- `json_annotation`: JSON serialization
 - `go_router`: Navigation
 - `flutter_typeahead`: Autocomplete search
 - `equatable`: Value equality
 - `intl`: Date formatting
+- `flutter_svg`: An SVG rendering and widget library
 
 ## Design Notes
-- Typography: Inter font (Medium and SemiBold weights) as per Foundations.pdf
-- Colors: BVG Blue (0xFF003087), white surface, black text, state-layer overlay
-- Components: Top app bar, full-screen search, list items with state-layer overlay
+### Foundations 
+- Typography: `Inter` Google font family (Medium and SemiBold weights) 
+- Colors: BVG Blue styling, white surface, black text, state-layer overlay
+
+   [Foundations.pdf](/documentation/design_notes/Foundations.pdf)
+
+### Components 
+- Components: Top app bar, full-screen search, list items with state-layer overlay 
+
+   [Components.pdf](/documentation/design_notes/Components.pdf)
+
+### Layouts [](/documentation/design_notes/Layouts.pdf)
 - Layouts: Based on 1.0_index and 2.0_Search_FullScreen* from Layouts.pdf
+
+   [Layouts ](/documentation/design_notes/Layouts.pdf)
 
 ## API
 - Uses BVG public REST API: https://v6.bvg.transport.rest
