@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir -p docs
           mv doc/api/* docs/ || echo "No files to move, proceeding..."
-      - name: Create .nojekyll file
+      - name: Create .nojekyll file in docs
         run: touch docs/.nojekyll
       - name: Debug publish directory
         run: ls -R ./docs || echo "Docs directory is empty or not found"
@@ -32,4 +32,6 @@ jobs:
           publish_dir: ./docs
           publish_branch: gh-pages
           force_orphan: true
-          keep_files: true # Preserve existing files like .nojekyll
+          keep_files: true
+          # Ensure .nojekyll is at the root of the published content
+          allow_empty_commit: true # Allow deployment even if no changes
