@@ -10,33 +10,20 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.32.0'
-      
       - run: flutter pub get
       - run: dart doc .
-      
-      - name: Prepare documentation
+      - name: Prepare docs
         run: |
-          # Create a fresh deployment directory
           mkdir -p public
-          # Move generated docs
-          mv doc/api/* public/ || echo "No files to move, proceeding..."
-          # Create .nojekyll in the deployment directory
-          touch public/.nojekyll
-          # Create index.html if needed
-          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=./index.html" /></head></html>' > public/index.html
-      
-      - name: Deploy to GitHub Pages
+          mv doc/api/* public/ || echo "No docs generated"
+          touch public/.nojekyll  # Extra safety to disable Jekyll
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          force_orphan: true
-          keep_files: false  # Clean the branch before deployment
-          allow_empty_commit: false
+          force_orphan: true  # Ensures clean deploys
