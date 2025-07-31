@@ -14,13 +14,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.0' # Specify your Flutter version
+          flutter-version: '3.32.0' # Match your Flutter version
       - run: flutter pub get
       - run: dart doc .
       - name: Move docs to /docs folder
         run: |
           mkdir -p docs
           mv doc/api/* docs/ || echo "No files to move, proceeding..."
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll
       - name: Debug publish directory
         run: ls -R ./docs || echo "Docs directory is empty or not found"
       - name: Deploy to GitHub Pages
