@@ -17,21 +17,18 @@ jobs:
           flutter-version: '3.32.0' # Match your Flutter version
       - run: flutter pub get
       - run: dart doc .
-      - name: Move docs to /docs folder
+      - name: Move docs to root and create .nojekyll
         run: |
-          mkdir -p docs
-          mv doc/api/* docs/ || echo "No files to move, proceeding..."
-      - name: Create .nojekyll file in docs
-        run: touch docs/.nojekyll
+          mv doc/api/* . || echo "No files to move, proceeding..."
+          touch .nojekyll
       - name: Debug publish directory
-        run: ls -R ./docs || echo "Docs directory is empty or not found"
+        run: ls -R . || echo "Publish directory is empty or not found"
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./
           publish_branch: gh-pages
           force_orphan: true
           keep_files: true
-          # Ensure .nojekyll is at the root of the published content
-          allow_empty_commit: true # Allow deployment even if no changes
+          allow_empty_commit: true
