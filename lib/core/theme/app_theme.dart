@@ -1,6 +1,19 @@
 import 'package:bvg_departures_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
+/// A class that defines the app's theme.
+/// It includes the primary color, text styles, and other theme-related properties.
+/// This class can be used to apply a consistent theme across the app.
+/// The theme is based on the BVG (Berliner Verkehrsbetriebe) branding,
+/// which includes a primary blue color and various text styles.
+/// Example usage:
+/// ```dart
+/// final theme = AppTheme.lightTheme;
+/// MaterialApp(
+///   theme: theme,
+///   home: MyHomePage(),
+/// );
+/// ```
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(

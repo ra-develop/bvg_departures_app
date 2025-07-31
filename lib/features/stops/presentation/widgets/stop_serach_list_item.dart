@@ -3,6 +3,13 @@ import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/// A widget that displays a list item for a stop in the search results.
+/// This widget is used to present information about a stop, including its name,
+/// location, and available transportation products.
+/// It includes an icon representing the stop and a list of product icons
+/// that indicate the types of transportation available at the stop.
+/// The widget is designed to be used in a list view, allowing users to
+/// easily browse through search results for stops.
 class StopSearchListItem extends StatelessWidget {
   final Stop stop;
 

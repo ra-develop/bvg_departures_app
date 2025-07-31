@@ -3,6 +3,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'line.g.dart';
 
+/// Represents a line in the BVG system.
+/// This model includes the type of line, its ID, name, and other attributes
+/// such as the line number, public status, administrative code, product name,
+/// mode of transport, and the operator.
 @JsonSerializable()
 class Line {
   @JsonKey(name: "type")

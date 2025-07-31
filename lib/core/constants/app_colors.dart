@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// This file defines the color constants used throughout the app.
+/// The colors are inspired by the BVG (Berliner Verkehrsbetriebe) branding,
+/// which includes a primary blue, secondary yellow, and various semantic colors.
 class AppColors {
   static const primary = Color(0xFF003087); // BVG Blue
   static const onPrimary = Color(0xFFFFFFFF); // White for text/icons on primary

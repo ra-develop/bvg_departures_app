@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+/// A screen that serves as the home page of the BVG Departures App.
+/// It provides a search button for users to find public transport stations.
+/// The screen is designed to be the entry point of the application,
+/// allowing users to quickly access the search functionality.
+/// The home screen includes an AppBar with a search button that navigates to the search page.
+/// The body of the screen contains a welcome message and some placeholder text
+/// to demonstrate the layout.
+/// The layout is responsive and adapts to different screen sizes.
+/// The home screen is styled using the app's theme, ensuring a consistent look and feel.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -27,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             icon: SvgPicture.asset('assets/svg/search.svg',
                 width: 24, height: 24),
             label: Text(
-              'Search for a Station and Stop',
+              'Search for a station',
               style: theme.textTheme.bodyLarge,
             ),
           ),
@@ -69,6 +78,7 @@ class HomeScreen extends StatelessWidget {
                   Text(
                       'Chicharrones DIY 8-bit gluten-free. Vibecession palo santo pickled fashion axe skateboard hoodie vapor ware vegan lumbersexual. Mumblecore celiac schlitz',
                       style: theme.textTheme.bodyLarge),
+                  // Repeated text for demonstration purposes
                   Text('Cupping aesthetic chambray',
                       style: theme.textTheme.titleSmall),
                   Text(

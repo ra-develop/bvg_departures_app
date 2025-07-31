@@ -2,6 +2,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'icon.g.dart';
 
+/// Represents an icon with a type and title.
+/// This model is used to define icons that can be associated with various
+/// features or elements in the application.
+/// The `type` field indicates the type of icon, which can be used for
+/// categorization or styling purposes.
+/// The `title` field provides a human-readable name for the icon.
+/// This model is serializable to and from JSON format, making it suitable for
+/// use in APIs or local storage.
+/// Example usage:
+/// ```dart
+/// final icon = Icon(type: 'bus', title: 'Bus Icon');
+/// final json = icon.toJson();
+/// final newIcon = Icon.fromJson(json);
+/// ```
 @JsonSerializable()
 class Icon {
   @JsonKey(name: "type")

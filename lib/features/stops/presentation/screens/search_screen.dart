@@ -1,4 +1,3 @@
-import 'package:bvg_departures_app/core/constants/app_colors.dart';
 import 'package:bvg_departures_app/core/widgets/app_bar_delimiter.dart';
 import 'package:bvg_departures_app/features/stops/data/models/stop.dart';
 import 'package:bvg_departures_app/features/stops/presentation/providers/stops_provider.dart';
@@ -10,6 +9,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:go_router/go_router.dart';
 
+/// A screen that allows users to search for stops.
+/// This screen is part of the stops feature in the BVG Departures App.
+/// It uses the Riverpod state management library to fetch and display stops.
+/// The screen includes an AppBar with a search field and a close button.
+/// The search field uses TypeAheadField to provide suggestions as the user types.
+/// The suggestions are fetched using the stopsProvider, which retrieves
+/// a list of Stop objects based on the provided search query.
+/// The screen handles loading and error states using the FutureProvider's
+/// `when` method, displaying a loading indicator while fetching data and
+/// an error message if the fetch fails.
+/// The user can select a stop from the suggestions, which navigates to the
+/// DeparturesScreen for that stop, displaying its departures.
+/// The screen also includes a clear button to reset the search field while keeping the keyboard open.
 class SearchScreen extends ConsumerWidget {
   SearchScreen({super.key});
 
@@ -31,7 +43,7 @@ class SearchScreen extends ConsumerWidget {
               focusNode: focusNode,
               autofocus: true,
               decoration: InputDecoration(
-                hintText: 'Search for a BVG stop',
+                hintText: 'Search for a station',
                 border: InputBorder.none,
                 hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).hintColor,

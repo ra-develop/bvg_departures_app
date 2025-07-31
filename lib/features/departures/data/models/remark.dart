@@ -5,6 +5,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'remark.g.dart';
 
+/// Represents a remark associated with a departure.
+/// This model includes various fields such as type, code, text, ID, summary,
+/// icon, priority, products, company, categories, and validity dates.
 @JsonSerializable()
 class Remark {
   @JsonKey(name: "type")

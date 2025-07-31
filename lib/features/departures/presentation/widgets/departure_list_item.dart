@@ -3,6 +3,11 @@ import 'package:bvg_departures_app/features/departures/data/models/departure.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// A widget that displays a departure list item.
+/// This widget shows the departure information including the line, destination,
+/// platform, time, and delay status.
+/// It uses a combination of text and icons to represent the departure details.
+/// The layout is responsive and adapts to different screen sizes.
 class DepartureListItem extends StatelessWidget {
   final Departure departure;
 
