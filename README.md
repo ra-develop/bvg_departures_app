@@ -72,3 +72,19 @@ flutter build apk -t lib/main.dart
 ## Notes
 - The project assumes Material Design icons for transport types; custom icons can be added as per design documents.
 - Run `dart run build_runner watch --delete-conflicting-outputs` for continuous code generation during development.
+
+## Viewing docs 
+
+The project documentation is available on GitHub Pages at this [link](https://ra-develop.github.io/bvg_departures_app/).
+
+Alternatively, the documentation can be viewed locally.
+(Detailed manual [here](https://pub.dev/packages/dartdoc#viewing-docs)).
+To enable navigation and search, the generated docs must be served with an HTTP server.
+
+An easy way to run an HTTP server locally is to use [`package:dhttpd`](https://pub.dev/packages/dhttpd). For example:
+
+    $ dart pub global activate dhttpd
+    $ dart pub global run dhttpd --path doc/api
+    
+
+To then read the generated docs in your browser, open the link that `dhttpd` outputs, usually `http://localhost:8080`.
