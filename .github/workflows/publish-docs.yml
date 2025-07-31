@@ -32,3 +32,4 @@ jobs:
           publish_dir: ./docs
           publish_branch: gh-pages
           force_orphan: true
+          keep_files: true # Preserve existing files like .nojekyll
