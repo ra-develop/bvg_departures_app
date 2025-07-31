@@ -128,6 +128,16 @@
 <li>The project assumes Material Design icons for transport types; custom icons can be added as per design documents.</li>
 <li>Run <code>dart run build_runner watch --delete-conflicting-outputs</code> for continuous code generation during development.</li>
 </ul>
+<h2 id="viewing-docs">Viewing docs</h2>
+<p>The project documentation is available on GitHub Pages at this <a href="https://ra-develop.github.io/bvg_departures_app/">link</a>.</p>
+<p>Alternatively, the documentation can be viewed locally.
+(Detailed manual <a href="https://pub.dev/packages/dartdoc#viewing-docs">here</a>).
+To enable navigation and search, the generated docs must be served with an HTTP server.</p>
+<p>An easy way to run an HTTP server locally is to use <a href="https://pub.dev/packages/dhttpd"><code>package:dhttpd</code></a>. For example:</p>
+<pre class="language-dart"><code>$ dart pub global activate dhttpd
+$ dart pub global run dhttpd --path doc/api
+</code></pre>
+<p>To then read the generated docs in your browser, open the link that <code>dhttpd</code> outputs, usually <code>http://localhost:8080</code>.</p>
 </section>
 
 
