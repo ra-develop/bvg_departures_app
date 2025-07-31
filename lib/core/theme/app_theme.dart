@@ -17,8 +17,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
-      primaryColor: AppColors.primary,
-      scaffoldBackgroundColor: AppColors.surface,
+      primaryColor: AppColors.primaryBlue800,
+      scaffoldBackgroundColor: AppColors.backgroundPrimary,
       textTheme: const TextTheme(
         displayLarge: TextStyle(
           fontFamily: 'Inter',

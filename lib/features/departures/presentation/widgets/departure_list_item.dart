@@ -39,9 +39,9 @@ class DepartureListItem extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       decoration: BoxDecoration(
-                        color: AppColors.surface,
-                        border:
-                            Border.all(color: AppColors.onSurface, width: 1),
+                        color: AppColors.backgroundPrimary,
+                        border: Border.all(
+                            color: AppColors.foregroundPrimary, width: 1),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
@@ -58,7 +58,7 @@ class DepartureListItem extends StatelessWidget {
                   // maxLines: 1,
                   // overflow: TextOverflow.visible,
                   style: theme.textTheme.titleSmall?.copyWith(
-                    color: AppColors.onSecondary,
+                    color: AppColors.foregroundSecondary,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -66,7 +66,7 @@ class DepartureListItem extends StatelessWidget {
                 Text(
                   '${departure.destination?.name ?? 'Unknown direction'} • Platform ${departure.platform ?? '?'}',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.onSecondary,
+                    color: AppColors.foregroundSecondary,
                   ),
                 ),
               ],
@@ -76,7 +76,9 @@ class DepartureListItem extends StatelessWidget {
           // Right content (time and status)
           Container(
             decoration: BoxDecoration(
-              color: isDelayed ? AppColors.error : AppColors.success,
+              color: isDelayed
+                  ? AppColors.backgroundSystemError
+                  : AppColors.backgroundSystemSuccess,
               borderRadius: BorderRadius.circular(8),
             ),
             child: SizedBox(
@@ -91,8 +93,9 @@ class DepartureListItem extends StatelessWidget {
                   Text(
                     departure.formattedWhen,
                     style: theme.textTheme.labelLarge?.copyWith(
-                      color:
-                          isDelayed ? AppColors.onError : AppColors.onSuccess,
+                      color: isDelayed
+                          ? AppColors.foregroundSystemError
+                          : AppColors.foregroundSystemSuccess,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -100,8 +103,9 @@ class DepartureListItem extends StatelessWidget {
                     isDelayed ? 'delayed\n$delayText' : 'on-time',
                     maxLines: 2,
                     style: theme.textTheme.labelLarge?.copyWith(
-                      color:
-                          isDelayed ? AppColors.onError : AppColors.onSuccess,
+                      color: isDelayed
+                          ? AppColors.foregroundSystemError
+                          : AppColors.foregroundSystemSuccess,
                     ),
                   ),
                   Spacer()
