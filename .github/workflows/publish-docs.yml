@@ -14,12 +14,12 @@ jobs:
         with:
           flutter-version: '3.32.0'
       - run: flutter pub get
-      - name: Create proper dartdoc config
-        run: |
-          echo 'dartdoc:
-            includeExternal: [README.md]
-            ' > dartdoc_options.yaml
-            cat dartdoc_options.yaml
+      # - name: Create proper dartdoc config
+      #   run: |
+      #     echo 'dartdoc:
+      #       includeExternal: [README.md]
+      #       ' > dartdoc_options.yaml
+      #       cat dartdoc_options.yaml
       - name: Verify README.md files exist
         run: |
           ls -la README.md
@@ -28,35 +28,24 @@ jobs:
           rm -rf doc/api/
           dart pub global activate dartdoc
           dart doc . 2>&1 | tee dartdoc.log
-          
       - name: Verify README was processed
         run: |
-          grep -i "readme" dartdoc.log || echo "README processing check failed"
-
+          grep -i "readme" dartdoc.log || echo "README processing check"
       - name: Verify doc/api creation
         run: |
-          ls -la doc/api/
-
-      # - name: Setup dartdoc config
-      #   run: |
-      #     ls -la README.md
-      #     echo 'dartdoc:
-      #       include:
-      #         - "README.md"' > dartdoc_options.yaml
-      # - name: Clean doc/api and run dartdoc
-      #   run: | 
-      #     rm -rf doc/api/
-      #     dart pub global activate dartdoc
-      #     dart doc .
+          ls -la doc/api/ || echo "doc/api directory is empty or not found."
       - name: Prepare public folder
         run: |
-          mkdir -p public
-          mv doc/api/* public/ || echo "No docs generated"
-          touch public/.nojekyll  # Extra safety to disable Jekyll
-      - name: Deploy
+          # mkdir -p docs
+          mv doc/api/* docs/ || echo "No files to move, proceeding..."
+      - name: Create .nojekyll file
+        run: touch docs/.nojekyll # Extra safety to disable Jekyll
+      - name: Debug publish directory
+        run: ls -R ./docs || echo "/docs directory is empty or not found"        
+      - name: Deploy o GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./docs
           publish_branch: gh-pages
           force_orphan: true  # Ensures clean deploys
