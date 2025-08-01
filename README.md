@@ -49,28 +49,29 @@ flutter build apk -t lib/main.dart
 - `flutter_svg`: An SVG rendering and widget library
 
 ## Design Notes
+
 ### Foundations 
 - Typography: `Inter` Google font family (Medium and SemiBold weights) 
 - Colors: BVG Blue styling, white surface, black text, state-layer overlay
 
-   [Foundations.pdf](/documentation/design_notes/Foundations.pdf)
+   [Foundations.pdf](./documentation/design_notes/Foundations.pdf)
 
 ### Components 
 - Components: Top app bar, full-screen search, list items with state-layer overlay 
 
-   [Components.pdf](/documentation/design_notes/Components.pdf)
+   [Components.pdf](./documentation/design_notes/Components.pdf)
 
-### Layouts [](/documentation/design_notes/Layouts.pdf)
+### Layouts
 - Layouts: Based on 1.0_index and 2.0_Search_FullScreen* from Layouts.pdf
 
-   [Layouts ](/documentation/design_notes/Layouts.pdf)
+   [Layouts ](./documentation/design_notes/Layouts.pdf)
 
 ## API
-- Uses BVG public REST API: https://v6.bvg.transport.rest
+- Uses BVG public REST API: [https://v6.bvg.transport.rest](https://v6.bvg.transport.rest)
 - Endpoints:
   -  `/stops` for search a stops,
   -  `/stops/{stopId}` get full stop information
-  -   `/stops/{stopId}/departures` for get departures from selected stop
+  -  `/stops/{stopId}/departures` for get departures from selected stop
 
 ## Notes
 - The project assumes Material Design icons for transport types; custom icons can be added as per design documents.
