@@ -14,20 +14,19 @@ jobs:
         with:
           flutter-version: '3.32.0'
       - run: flutter pub get
-
-      # - name: Create proper dartdoc config
-      #   run: |
-      #     echo 'dartdoc:
-      #       categories:
-      #         readme:
-      #           markdown: README.md
-      #           displayName: Readme
-      #       categoryOrder: [readme]
-      #       ' > dartdoc_options.yaml
-      #       cat dartdoc_options.yaml
-      # - name: Verify README.md files exist
-      #   run: |
-      #     ls -la README.md
+      - name: Create proper dartdoc config
+        run: |
+          echo 'dartdoc:
+            categories:
+              readme:
+                markdown: README.md
+                displayName: Readme
+            categoryOrder: [readme]
+            ' > dartdoc_options.yaml
+            cat dartdoc_options.yaml
+      - name: Verify README.md files exist
+        run: |
+          ls -la README.md
       - name: Clean doc/api and run dartdoc
         run: | 
           rm -rf doc/api/
