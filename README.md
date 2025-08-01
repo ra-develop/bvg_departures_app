@@ -84,6 +84,7 @@ Alternatively, the documentation can be viewed locally by switching to the gh-pa
 
 ```bash
 git switch gh-pages
+git pull --rebase
 ```
 
 (Detailed manual [here](https://pub.dev/packages/dartdoc#viewing-docs)).
