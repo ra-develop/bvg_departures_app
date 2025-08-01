@@ -18,20 +18,24 @@ jobs:
       - name: Generate Documentation
         run: |
           # Create proper dartdoc config
-          echo 'dartdoc:
-            includeExternal:
-              - "README.md"' > dartdoc_options.yaml
+          # echo 'dartdoc:
+          #   includeExternal:
+          #     - "README.md"' > dartdoc_options.yaml
 
           # Verify files exist
-          ls -la README.md
-          cat dartdoc_options.yaml
+          # ls -la README.md
+          # cat dartdoc_options.yaml
 
           # Generate docs with debug output
-          dart doc . 2>&1 | tee dartdoc.log
-
+          # dart doc . 2>&1 | tee dartdoc.log
+          
+          rm -rf doc/api/
+          dart pub global activate dartdoc
+          dart doc .
+          
           # Verify README was processed
-          grep -i "readme" dartdoc.log || echo "README processing check failed"
-          ls -la doc/api/
+          # grep -i "readme" dartdoc.log || echo "README processing check failed"
+          # ls -la doc/api/
 
       # - name: Setup dartdoc config
       #   run: |
