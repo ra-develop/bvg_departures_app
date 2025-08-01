@@ -37,15 +37,15 @@ jobs:
       - name: Prepare public folder
         run: |
           mkdir -p docs
-          mv doc/api/* docs/ || echo "No files to move, proceeding..."
+          mv doc/api/* . || echo "No files to move, proceeding..."
       - name: Create .nojekyll file
-        run: touch docs/.nojekyll # Extra safety to disable Jekyll
+        run: touch .nojekyll # Extra safety to disable Jekyll
       - name: Debug publish directory
         run: ls -R ./docs || echo "/docs directory is empty or not found"        
       - name: Deploy o GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./
           publish_branch: gh-pages
           force_orphan: true  # Ensures clean deploys
