@@ -14,8 +14,13 @@ jobs:
         with:
           flutter-version: '3.32.0'
       - run: flutter pub get
+      - name: Setup dartdoc config
+        run: |
+          echo 'dartdoc:
+            include:
+              - "README.md"' > dartdoc_options.yaml
       - run: dart pub global activate dartdoc
-      - run: dart doc --include 'README.md'
+      - run: dart doc .
       - name: Prepare docs
         run: |
           mkdir -p public
@@ -28,3 +33,4 @@ jobs:
           publish_dir: ./public
           publish_branch: gh-pages
           force_orphan: true  # Ensures clean deploys
+          
