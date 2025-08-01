@@ -17,24 +17,24 @@ A Flutter application to display upcoming departures for a selected BVG stop, bu
 
 ## Setup
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/ra-develop/bvg_departures_app.git
    ```
 2. Install dependencies:
-   ```
+   ```bash
    flutter pub get
    ```
 3. Generate JSON serialization code:
-   ```
+   ```bash
    dart run build_runner build --delete-conflicting-outputs
    ```
 4. Run the app:
-   ```
+   ```bash
    flutter run -t lib/main.dart
    ```
 
 ## Build APK
-```
+```bash
 flutter build apk -t lib/main.dart
 ```
 
@@ -88,3 +88,4 @@ An easy way to run an HTTP server locally is to use [`package:dhttpd`](https://p
     
 
 To then read the generated docs in your browser, open the link that `dhttpd` outputs, usually `http://localhost:8080`.
+
