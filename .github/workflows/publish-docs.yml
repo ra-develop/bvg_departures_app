@@ -31,8 +31,8 @@ jobs:
       - name: Clean doc/api and run dartdoc
         run: | 
           rm -rf doc/api/
-          flutter dart pub global activate dartdoc
-          flutter dart doc . 2>&1 | tee dartdoc.log
+          dart pub global activate dartdoc
+          dart doc . 2>&1 | tee dartdoc.log
           
       - name: Verify README was processed
         run: |
