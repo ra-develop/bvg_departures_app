@@ -17,22 +17,21 @@ jobs:
 
       - name: Generate Documentation
         run: |
-          # 1. Ensure base Dart library exists
-          mkdir -p lib
-          echo '/// Main library documentation\nlibrary my_package;' > lib/my_package.dart
-          
-          # 2. Create proper dartdoc config
+          # Create proper dartdoc config
           echo 'dartdoc:
-            include:
-              - path: "README.md"
-                rel: "README.md"' > dartdoc_options.yaml
-          
-          # 3. Generate docs with debug output
-          dart doc . 2>&1 | tee dartdoc.log || echo "Continuing with possible warnings"
-          
-          # 4. Verify output
+            includeExternal:
+              - "README.md"' > dartdoc_options.yaml
+
+          # Verify files exist
+          ls -la README.md
+          cat dartdoc_options.yaml
+
+          # Generate docs with debug output
+          dart doc . 2>&1 | tee dartdoc.log
+
+          # Verify README was processed
+          grep -i "readme" dartdoc.log || echo "README processing check failed"
           ls -la doc/api/
-          grep -i "readme" dartdoc.log || true
 
       # - name: Setup dartdoc config
       #   run: |
