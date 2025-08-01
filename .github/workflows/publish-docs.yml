@@ -17,11 +17,7 @@ jobs:
       - name: Create proper dartdoc config
         run: |
           echo 'dartdoc:
-            awesome:
-              readme:
-                markdown: README.md
-                displayName: Readme
-            categoryOrder: [Awesome]
+            includeExternal: [README.md]
             ' > dartdoc_options.yaml
             cat dartdoc_options.yaml
       - name: Verify README.md files exist
