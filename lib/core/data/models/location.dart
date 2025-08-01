@@ -10,7 +10,6 @@ part 'location.g.dart';
 /// the exact geographical coordinates of the location.
 /// This model is serializable to and from JSON format, making it suitable for
 /// use in APIs or local storage.
-/// Example usage:
 @JsonSerializable()
 class Location {
   String? type; // "location"
