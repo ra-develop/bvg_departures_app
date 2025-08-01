@@ -67,7 +67,10 @@ flutter build apk -t lib/main.dart
 
 ## API
 - Uses BVG public REST API: https://v6.bvg.transport.rest
-- Endpoints: `/stops` for search, `/stops/{stopId}/departures` for departures
+- Endpoints:
+  -  `/stops` for search a stops,
+  -  `/stops/{stopId}` get full stop information
+  -   `/stops/{stopId}/departures` for get departures from selected stop
 
 ## Notes
 - The project assumes Material Design icons for transport types; custom icons can be added as per design documents.
@@ -83,9 +86,10 @@ To enable navigation and search, the generated docs must be served with an HTTP 
 
 An easy way to run an HTTP server locally is to use [`package:dhttpd`](https://pub.dev/packages/dhttpd). For example:
 
-    $ dart pub global activate dhttpd
-    $ dart pub global run dhttpd --path doc/api
-    
+```bash
+dart pub global activate dhttpd
+dart pub global run dhttpd --path doc/api
+```
 
 To then read the generated docs in your browser, open the link that `dhttpd` outputs, usually `http://localhost:8080`.
 
