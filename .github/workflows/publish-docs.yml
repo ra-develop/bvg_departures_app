@@ -16,11 +16,15 @@ jobs:
       - run: flutter pub get
       - name: Setup dartdoc config
         run: |
+          ls -la README.md
           echo 'dartdoc:
             include:
-              - "./README.md"' > dartdoc_options.yaml
-      - run: dart pub global activate dartdoc
-      - run: dart doc .
+              - "README.md"' > dartdoc_options.yaml
+      - name: Clean doc/api and run dartdoc
+        run: | 
+          rm -rf doc/api/
+          dart pub global activate dartdoc
+          dart doc .
       - name: Prepare docs
         run: |
           mkdir -p public
