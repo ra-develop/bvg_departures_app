@@ -18,7 +18,7 @@ jobs:
         run: |
           echo 'dartdoc:
             include:
-              - "README.md"' > dartdoc_options.yaml
+              - "./README.md"' > dartdoc_options.yaml
       - run: dart pub global activate dartdoc
       - run: dart doc .
       - name: Prepare docs
@@ -33,4 +33,3 @@ jobs:
           publish_dir: ./public
           publish_branch: gh-pages
           force_orphan: true  # Ensures clean deploys
-          
