@@ -15,28 +15,44 @@ jobs:
           flutter-version: '3.32.0'
       - run: flutter pub get
 
-      - name: Create proper dartdoc config
-        run: |
-          echo 'dartdoc:
-            categories:
-              readme:
-                markdown: README.md
-                displayName: Readme
-          ' > dartdoc_options.yaml
-      - name: Verify files exist
-        run: |
-          ls -la README.md
-          cat dartdoc_options.yaml
+      # - name: Create proper dartdoc config
+      #   run: |
+      #     echo 'dartdoc:
+      #       categories:
+      #         readme:
+      #           markdown: README.md
+      #           displayName: Readme
+      #       categoryOrder: [readme]
+      #       ' > dartdoc_options.yaml
+      #       cat dartdoc_options.yaml
+      # - name: Verify README.md files exist
+      #   run: |
+      #     ls -la README.md
       - name: Clean doc/api and run dartdoc
         run: | 
           rm -rf doc/api/
-          dart pub global activate dartdoc
-          dart doc .
+          flutter dart pub global activate dartdoc
+          flutter dart doc . 2>&1 | tee dartdoc.log
           
       - name: Verify README was processed
         run: |
           grep -i "readme" dartdoc.log || echo "README processing check failed"
+
+      - name: Verify doc/api creation
+        run: |
           ls -la doc/api/
+
+      # - name: Setup dartdoc config
+      #   run: |
+      #     ls -la README.md
+      #     echo 'dartdoc:
+      #       include:
+      #         - "README.md"' > dartdoc_options.yaml
+      # - name: Clean doc/api and run dartdoc
+      #   run: | 
+      #     rm -rf doc/api/
+      #     dart pub global activate dartdoc
+      #     dart doc .
       - name: Prepare public folder
         run: |
           mkdir -p public
