@@ -14,18 +14,38 @@ jobs:
         with:
           flutter-version: '3.32.0'
       - run: flutter pub get
-      - name: Setup dartdoc config
+
+      - name: Generate Documentation
         run: |
-          ls -la README.md
+          # 1. Ensure base Dart library exists
+          mkdir -p lib
+          echo '/// Main library documentation\nlibrary my_package;' > lib/my_package.dart
+          
+          # 2. Create proper dartdoc config
           echo 'dartdoc:
             include:
-              - "README.md"' > dartdoc_options.yaml
-      - name: Clean doc/api and run dartdoc
-        run: | 
-          rm -rf doc/api/
-          dart pub global activate dartdoc
-          dart doc .
-      - name: Prepare docs
+              - path: "README.md"
+                rel: "README.md"' > dartdoc_options.yaml
+          
+          # 3. Generate docs with debug output
+          dart doc . 2>&1 | tee dartdoc.log || echo "Continuing with possible warnings"
+          
+          # 4. Verify output
+          ls -la doc/api/
+          grep -i "readme" dartdoc.log || true
+
+      # - name: Setup dartdoc config
+      #   run: |
+      #     ls -la README.md
+      #     echo 'dartdoc:
+      #       include:
+      #         - "README.md"' > dartdoc_options.yaml
+      # - name: Clean doc/api and run dartdoc
+      #   run: | 
+      #     rm -rf doc/api/
+      #     dart pub global activate dartdoc
+      #     dart doc .
+      - name: Prepare public folder
         run: |
           mkdir -p public
           mv doc/api/* public/ || echo "No docs generated"
