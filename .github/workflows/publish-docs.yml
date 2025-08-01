@@ -36,7 +36,7 @@ jobs:
           ls -la doc/api/ || echo "doc/api directory is empty or not found."
       - name: Prepare public folder
         run: |
-          # mkdir -p docs
+          mkdir -p docs
           mv doc/api/* docs/ || echo "No files to move, proceeding..."
       - name: Create .nojekyll file
         run: touch docs/.nojekyll # Extra safety to disable Jekyll
